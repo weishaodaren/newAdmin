@@ -25,3 +25,17 @@ CREATE TABLE hp_set(
 );
 INSERT INTO hp_set VALUES
 (NULL,'海底捞','http://127.0.0.1:3002','http://127.0.0.1:3003','http://127.0.0.1','XICP备0000000号','Copyright © xxxxxxx');
+
+-- 桌台
+CREATE TABLE hp_tab(
+    tid INT PRIMARY KEY AUTO_INCREMENT,
+    tname VARCHAR(32),
+    type VARCHAR(32),
+    status INT
+);
+INSERT INTO hp_tab VALUES
+(NULL,'1','2人桌',1),
+(NULL,'2','4人桌',2),
+(NULL,'3','6-8人桌',3),
+(NULL,'2','10人桌',4);
+
