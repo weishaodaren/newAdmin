@@ -103,3 +103,5 @@ CREATE TABLE hp_order_detail(
     FOREIGN KEY(dishId) REFERENECS hp_dish(did),
     FOREIGN KEY(orderId) REFERENECS hp_dish(oid)
 );
+INSERT INTO hp_order_detail VALUES
+(NULL,1,1,'A先生',1);
