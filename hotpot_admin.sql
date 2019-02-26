@@ -73,7 +73,7 @@ CREATE TABLE hp_dish(
     price DECIMAL(6,2),
     detail VARCHAR(128),
     categoryId INT,
-    FOREIGN KEY(categoryId) REFERENECS hp_category(cid)
+    FOREIGN KEY(cid) REFERENECS hp_category(cid)
 );
 INSERT INTO hp_dish VALUES
 (NULL,'草鱼片','CE7I9470_fish.jpg',40,'选鲜活草鱼，切出鱼片冷鲜保存。锅开后再煮1分钟左右即可食用。','1'),
