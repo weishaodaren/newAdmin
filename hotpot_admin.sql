@@ -52,3 +52,28 @@ INSERT INTO hp_reservation VALUES
 (NULL,'B女士','15821111111','1551157337846','1551434400000'),
 (NULL,'C小姐','15821111111','1551157337846','1551434400000'),
 (NULL,'D先生','15821111111','1551157337846','1551434400000');
+
+-- 菜品分类
+CREATE TABLE hp_category(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    cname VARCHAR(32)
+);
+INSERT INTO hp_category VALUES
+(NULL,'肉类'),
+(NULL,'丸滑类'),
+(NULL,'海鲜河鲜'),
+(NULL,'蔬菜豆制品'),
+(NULL,'菌菇类');
+
+--菜品
+CREATE TABLE hp_dish(
+    did INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(32),
+    imgUrl VARCHAR(32),
+    price DECIMAL(6,2),
+    detail VARCHAR(128),
+    categoryId INT,
+    FOREIGN KEY(categoryId) REFERENECS hp_category(cid)
+);
+INSERT INTO hp_dish VALUES
+(1,'草鱼片','')
