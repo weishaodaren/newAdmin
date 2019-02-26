@@ -76,4 +76,30 @@ CREATE TABLE hp_dish(
     FOREIGN KEY(categoryId) REFERENECS hp_category(cid)
 );
 INSERT INTO hp_dish VALUES
-(1,'草鱼片','')
+(NULL,'草鱼片','CE7I9470_fish.jpg',40,'选鲜活草鱼，切出鱼片冷鲜保存。锅开后再煮1分钟左右即可食用。','1'),
+(NULL,'脆皮肠','CE7I901702.jpg',30,'锅开后再煮3分钟左右即可食用。','2'),
+(NULL,'酥肉','HGS_476003.jpg',35,'选用冷鲜五花肉，加上鸡蛋，淀粉等原料炸制，色泽黄亮，酥软醇香，肥而不腻。锅开后再煮3分钟左右即可食用。','3');
+
+
+--订单
+CREATE TABLE hp_order(
+    oid INT PRIMARY KEY AUTO_INCREMENT,
+    sTime BIGINT,
+    eTime BIGINT,
+    customerCount INT,
+    tabId INT,
+    FOREIGN KEY(tabId) REFERENECS hp_tab(tid)
+);
+INSERT INTO hp_order VALUES
+(1,1551412800000,1551416400000,3,2,);
+
+--订单详情
+CREATE TABLE hp_order_detail(
+    oid INT PRIMARY KEY AUTO_INCREMENT,
+    dishId INT,   --菜品编号
+    dishCount INT,  --份数
+    customerName VARCHAR(32),  --顾客名
+    orderId INT,    --  订单编号
+    FOREIGN KEY(dishId) REFERENECS hp_dish(did),
+    FOREIGN KEY(orderId) REFERENECS hp_dish(oid)
+);
