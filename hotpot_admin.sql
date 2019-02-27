@@ -73,7 +73,7 @@ CREATE TABLE hp_dish(
     price DECIMAL(6,2),
     detail VARCHAR(128),
     categoryId INT,
-    FOREIGN KEY(cid) REFERENECS hp_category(cid)
+    FOREIGN KEY(categoryId) REFERENCES hp_category(cid)
 );
 INSERT INTO hp_dish VALUES
 (NULL,'草鱼片','CE7I9470_fish.jpg',40,'选鲜活草鱼，切出鱼片冷鲜保存。锅开后再煮1分钟左右即可食用。','1'),
@@ -88,20 +88,20 @@ CREATE TABLE hp_order(
     eTime BIGINT,
     customerCount INT,
     tabId INT,
-    FOREIGN KEY(tabId) REFERENECS hp_tab(tid)
+    FOREIGN KEY(tabId) REFERENCES hp_tab(tid)
 );
 INSERT INTO hp_order VALUES
-(1,1551412800000,1551416400000,3,2,);
+(1,1551412800000,1551416400000,3,2);
 
 --订单详情
 CREATE TABLE hp_order_detail(
     oid INT PRIMARY KEY AUTO_INCREMENT,
-    dishId INT,   --菜品编号
-    dishCount INT,  --份数
-    customerName VARCHAR(32),  --顾客名
-    orderId INT,    --  订单编号
-    FOREIGN KEY(dishId) REFERENECS hp_dish(did),
-    FOREIGN KEY(orderId) REFERENECS hp_dish(oid)
+    dishId INT,   #菜品编号
+    dishCount INT,  #份数
+    customerName VARCHAR(32),  #顾客名
+    orderId INT,    #订单编号
+    FOREIGN KEY(dishId) REFERENCES hp_dish(did)
+    #FOREIGN KEY(orderId) REFERENCES hp_dish(oid)
 );
 INSERT INTO hp_order_detail VALUES
 (NULL,1,1,'A先生',1);
