@@ -56,7 +56,7 @@ CREATE TABLE hp_reservation(
   contactTime BIGINT,
   dinnerTime BIGINT,
   tableId INT,
-  FOREIGN KEY(tableId) REFERENCES xfn_table(tid)
+  FOREIGN KEY(tableId) REFERENCES hp_table(tid)
 );
 INSERT INTO hp_reservation VALUES
 (NULL, '丁丁', '13501234561', '1548311700000', '1549011000000', '1'),
@@ -101,7 +101,7 @@ CREATE TABLE hp_dish(
   price DECIMAL(6,2),
   detail VARCHAR(128),
   categoryId INT,
-  FOREIGN KEY(categoryId) REFERENCES xfn_category(cid)
+  FOREIGN KEY(categoryId) REFERENCES hp_category(cid)
 );
 INSERT INTO hp_dish VALUES
 (NULL, '草鱼片', 'r9470.jpg', '35', '选鲜活草鱼，切出鱼片冷鲜保存。锅开后再煮1分钟左右即可食用', '1'),
@@ -162,7 +162,7 @@ CREATE TABLE hp_order(
   endTime BIGINT,
   customerCount INT,
   tableId INT,
-  FOREIGN KEY(tableId) REFERENCES xfn_table(tid)
+  FOREIGN KEY(tableId) REFERENCES hp_table(tid)
 );
 INSERT INTO hp_order VALUES
 (100000, '1547800000000', '1547814918000', '2', '1'),
@@ -199,8 +199,8 @@ CREATE TABLE hp_order_detail(
   dishCount INT,    /*份数*/
   customerName VARCHAR(32),    /*顾客名称*/
   orderId INT,      /*订单编号*/
-  FOREIGN KEY(dishId) REFERENCES xfn_dish(did),
-  FOREIGN KEY(orderId) REFERENCES xfn_order(oid)
+  FOREIGN KEY(dishId) REFERENCES hp_dish(did),
+  FOREIGN KEY(orderId) REFERENCES hp_order(oid)
 );
 INSERT INTO hp_order_detail VALUES
 (NULL, '50', '2', '丁丁', '100000'),
