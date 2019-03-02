@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">获取所有菜品类别</button>
+    <button id="btn2">删除所有菜品类别</button>
+    <button id="btn3">添加所有菜品类别</button>
+    <button id="btn4">修改所有菜品类别</button>
+    <script src="./axios.min.js"></script>
+    <script>
+        btn1.onclick=function(){
+            axios.get('http://127.0.0.1:6606/admin/category').then((result)=>{
+                console.log(`获取菜品类别成功`);
+                console.log(result.data);
+            }).catch((err)=>{
+                console.log(err);
+            })
+        };
+        btn2.onclick=function(){
+            // PUT DELETE‘预取请求’--Preflight Request
+            // OPTIONS 询问服务器是否支持请求方法
+            axios.delete('http://127.0.0.1:6606/admin/category/7').then((result)=>{
+                console.log(`删除菜品`);
+                console.log(result.data);
+            }).catch((err)=>{
+                console.log(err);                
+            });
+         };
+        btn3.onclick=function(){
+            var data={cname:'海派新品'};
+            // 发送json类型请求数据
+            axios.post('http://127.0.0.1:6606/admin/category',data).then((result)=>{
+                console.log(`添加成功`);
+                console.log(result.data);
+            }).catch((err)=>{
+                console.log(err);
+            });
+         };
+         btn4.onclick=function(){
+             var data={cid:36,cname:'大便'};
+             axios.put('http://127.0.0.1:6606/admin/category',data).then((result)=>{
+                console.log(`修改成功`,result.data);
+             }).catch((err)=>{
+                console.log(err);
+             });
+         };
+
+    </script>
+</body>
+</html>
