@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">获取所有菜品</button>
+    <button id="btn2">获取某一道菜品</button>
+    <button id="btn3">添加菜品</button>
+    <button id="btn4">删除菜品</button>
+    <button id="btn5">修改菜品</button><br>
+    <button id="btn6" type="button">异步上传图片</button><br>
+    <input type="text" id="inputDesc"><br>
+    <input type="file" id="inputFile">
+    <script src="./axios.min.js"></script>
+<script>
+btn1.onclick=function(){
+    axios.get('http://127.0.0.1:6606/admin/dish').then((res)=>{
+        console.log(res.data);
+    }).catch((err)=>{
+        console.log(err);
+    });
+};
+
+btn6.onclick=function(){
+    // 异步上传文件
+    //手动建立multipart/form-data请求主体  axios 会自动更改
+    var data=new FormData();
+    // 向请求主体追加提交的数据
+    data.append('description',inputDesc.value);
+    // 向请求主体追加用户选中的文件
+    // console.dir(inputFile);
+    data.append('Img',inputFile.files[0]);
+    axios.post('http://127.0.0.1:6606/admin/dish/image',data).then((result)=>{
+        // alert(JSON.stringify(result.data));
+    }).catch((err)=>{
+        alert(err);
+    })
+};
+</script>
+<!-- <hr>
+<h3>文件上传</h3>
+<form action="http://127.0.0.1:6606/admin/dish/image" method="POST" enctype="multipart/form-data">
+    <input type="file" name="Img"><br>
+    <input type="" name="description">
+    <input type="submit">
+</form> -->
+
+
+</body>
+</html>
