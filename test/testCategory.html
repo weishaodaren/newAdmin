@@ -14,7 +14,7 @@
     <script src="./axios.min.js"></script>
     <script>
         btn1.onclick=function(){
-            axios.get('http://127.0.0.1:6606/admin/category').then((result)=>{
+            axios.get('http://127.0.0.1:8090/admin/category').then((result)=>{
                 console.log(`获取菜品类别成功`);
                 console.log(result.data);
             }).catch((err)=>{
@@ -24,7 +24,7 @@
         btn2.onclick=function(){
             // PUT DELETE‘预取请求’--Preflight Request
             // OPTIONS 询问服务器是否支持请求方法
-            axios.delete('http://127.0.0.1:6606/admin/category/7').then((result)=>{
+            axios.delete('http://127.0.0.1:8090/admin/category/7').then((result)=>{
                 console.log(`删除菜品`);
                 console.log(result.data);
             }).catch((err)=>{

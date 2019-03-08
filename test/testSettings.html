@@ -7,23 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="btn1">管理员登录</button>
-    <button id="btn2">修改密码</button>
+    <button id="btn1">获取全局设置信息</button>
+    <button id="btn2">修改全局设置信息</button>
     
 <script src="./axios.min.js"></script>
 <script>
 btn1.onclick=function(){
-    // var data={aname:'admin',apwd:'123456'};
-    axios.get('http://127.0.0.1:8090/admin/login/admin/123123').then((result)=>{
-        // console.log(`登录完成！ 结果为：`);
+    axios.get('http://127.0.0.1:8090/admin/settings').then((result)=>{
         console.log(result.data);
     }).catch((err)=>{
         console.log(err);
     })
 };
 btn2.onclick=function(){
-    var data={aname:'admin',oldPwd:'123123',newPwd:'123456'};
-    axios.patch('http://127.0.0.1:8090/admin',data).then((result)=>{
+    var data={"sid":1,"appName":"巴啦啦老魔仙","apiUrl":"http://127.0.0.1:8090","adminUrl":"http://127.0.0.1:8091","appUrl":"http://127.0.0.1:8092","icp":"XICP备XXXXXX号","copyright":"Copyright © XXXXXXXX有限公司版权所有"};
+    axios.put('http://127.0.0.1:8090/admin/settings',data).then((result)=>{
         console.log(`修改成功`);
         console.log(result.data);
     }).catch((err)=>{

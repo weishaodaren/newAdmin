@@ -34,7 +34,7 @@ btn6.onclick=function(){
     // 向请求主体追加用户选中的文件
     // console.dir(inputFile);
     data.append('Img',inputFile.files[0]);
-    axios.post('http://127.0.0.1:6606/admin/dish/image',data).then((result)=>{
+    axios.post('http://127.0.0.1:8090/admin/dish/image',data).then((result)=>{
         // alert(JSON.stringify(result.data));
     }).catch((err)=>{
         alert(err);
