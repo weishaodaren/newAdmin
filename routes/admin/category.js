@@ -33,7 +33,7 @@ router.post('/',(req,res)=>{
     var data=req.body;
     pool.query('INSERT INTO hp_category SET ?',[data],(err,result)=>{
         if(err) throw err;
-        res.send({code:200,msg:`1 category added`});
+        res.send({code:200,msg:`1 category added`,cid:result.insertId});
     });
 
 });

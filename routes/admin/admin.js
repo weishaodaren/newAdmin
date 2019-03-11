@@ -6,7 +6,7 @@ router.get('/login/:aname/:apwd',(req,res)=>{
     var aname=req.params.aname;
     var apwd=req.params.apwd;
     pool.query('SELECT aid FROM hp_admin WHERE aname=? AND apwd=PASSWORD(?)',[aname,apwd],(err,result)=>{
-        console.log(result);
+        // console.log(result);
         //增删改 返回对象  查 返回数组
         if(err) throw err;
         if(result.length>0){   //查询到一行数据
