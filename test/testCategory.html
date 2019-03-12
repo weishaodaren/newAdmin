@@ -34,7 +34,7 @@
         btn3.onclick=function(){
             var data={cname:'海派新品'};
             // 发送json类型请求数据
-            axios.post('http://127.0.0.1:6606/admin/category',data).then((result)=>{
+            axios.post('http://127.0.0.1:8090/admin/category',data).then((result)=>{
                 console.log(`添加成功`);
                 console.log(result.data);
             }).catch((err)=>{
@@ -43,7 +43,7 @@
          };
          btn4.onclick=function(){
              var data={cid:36,cname:'大便'};
-             axios.put('http://127.0.0.1:6606/admin/category',data).then((result)=>{
+             axios.put('http://127.0.0.1:8090/admin/category',data).then((result)=>{
                 console.log(`修改成功`,result.data);
              }).catch((err)=>{
                 console.log(err);
